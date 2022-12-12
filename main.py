@@ -1,5 +1,5 @@
 def test():
-    print('Hello World!')
+    return 'Hello World!'
 
 if __name__ == '__main__':#直接yobareru.pyを実行した時だけ、def test()を実行する
     test()
