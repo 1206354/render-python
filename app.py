@@ -45,3 +45,4 @@ def handle_message(event):
         event.reply_token,
         #TextSendMessage(text=event.message.text))
         TextSendMessage(text=main.test())
+    )
