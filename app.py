@@ -11,6 +11,11 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import os
+import main
+import subprocess
+path = 'main.py'
+f = open(path, 'w')
+f.writelines("print(\"hello world!\")
 
 app = Flask(__name__)
 
@@ -38,12 +43,14 @@ def callback():
 
     return 'OK'
 
-
+def python_to_python():
+   return python main.py
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        #TextSendMessage(text=event.message.text))
+        TextSendMessage(text=python_to_python()))
 
 
 if __name__ == "__main__":
