@@ -12,10 +12,6 @@ from linebot.models import (
 )
 import os
 import main
-import subprocess
-path = 'main.py'
-f = open(path, 'w')
-f.writelines("print(\"hello world!\")")
 
 app = Flask(__name__)
 
@@ -49,9 +45,3 @@ def handle_message(event):
         event.reply_token,
         #TextSendMessage(text=event.message.text))
         TextSendMessage(text=main.test())
-
-
-if __name__ == "__main__":
-#    app.run()
-    port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
