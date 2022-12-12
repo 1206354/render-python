@@ -1,2 +1,3 @@
 def test():
-    return 'Hello World!'
+    message = "Hello World!"
+    return message
