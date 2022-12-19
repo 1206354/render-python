@@ -12,7 +12,7 @@ from linebot.models import (
 )
 import os
 import main
-
+import config
 app = Flask(__name__)
 
 #環境変数取得
