@@ -16,12 +16,8 @@ import main
 app = Flask(__name__)
 
 #環境変数取得
-YOUR_CHANNEL_ACCESS_TOKEN = os.environ["e3ace36262c812d86aae2f2f8970980e"]
-YOUR_CHANNEL_SECRET = os.environ["e3ace36262c812d86aae2f2f8970980e"]
-
-line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-
+line_bot_api = LineBotApi(config.LINE_CHANNEL_ACCESS_TOKEN)    # config.pyで設定したチャネルアクセストークン
+handler = WebhookHandler(config.LINE_CHANNEL_SECRET)    # config.pyで設定したチャネルシークレット
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
