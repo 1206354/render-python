@@ -43,5 +43,5 @@ def handle_message(event):
         TextSendMessage(text=("return = "+main.test())))
 if __name__ == "__main__":
 #    app.run()
-    port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+#    port = int(os.getenv("PORT", 5000))
+#    app.run(host="0.0.0.0", port=port)
