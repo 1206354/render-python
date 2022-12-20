@@ -14,9 +14,6 @@ import main
 import config
 #Token取得
 
-YOUR_CHANNEL_ACCESS_TOKEN = "チャネルアクセストークン"
-YOUR_CHANNEL_SECRET = "チャネルシークレット"
-
 app = Flask(__name__)
 app.debug = False
 
@@ -44,8 +41,8 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        #TextSendMessage(text=event.message.text))
-        TextSendMessage(text=("return = "+main.test())))
+        TextSendMessage(text=event.message.text))
+        #TextSendMessage(text=("return = "+main.test())))
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT"))
