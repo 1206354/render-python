@@ -1,4 +1,3 @@
-
 from flask import Flask, request, abort
 
 from linebot import (
@@ -13,11 +12,17 @@ from linebot.models import (
 import os
 import main
 import config
-app = Flask(__name__)
+#Token取得
 
-#環境変数取得
-line_bot_api = LineBotApi(config.LINE_CHANNEL_ACCESS_TOKEN)    # config.pyで設定したチャネルアクセストークン
-handler = WebhookHandler(config.LINE_CHANNEL_SECRET)    # config.pyで設定したチャネルシークレット
+YOUR_CHANNEL_ACCESS_TOKEN = "チャネルアクセストークン"
+YOUR_CHANNEL_SECRET = "チャネルシークレット"
+
+app = Flask(__name__)
+app.debug = False
+
+line_bot_api = LineBotApi(config.LINE_CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(config.LINE_CHANNEL_SECRET)
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -41,7 +46,7 @@ def handle_message(event):
         event.reply_token,
         #TextSendMessage(text=event.message.text))
         TextSendMessage(text=("return = "+main.test())))
+
 if __name__ == "__main__":
-#   app.run()
-    port = int(os.getenv("PORT", 5000))
+    port = int(os.getenv("PORT"))
     app.run(host="0.0.0.0", port=port)
