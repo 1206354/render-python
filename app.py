@@ -13,7 +13,7 @@ import os
 import main
 import config
 #Token取得
-
+print("success1")
 app = Flask(__name__)
 app.debug = False
 
@@ -22,6 +22,7 @@ handler = WebhookHandler(config.LINE_CHANNEL_SECRET)
 
 @app.route("/callback", methods=['POST'])
 def callback():
+    print("success2")
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
@@ -39,7 +40,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print("success")
+    print("success3")
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
