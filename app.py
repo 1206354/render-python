@@ -40,12 +40,13 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print("success3")
+    if event.reply_token == "00000000000000000000000000000000":
+        return
+ 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
-        #TextSendMessage(text=("return = "+main.test())))
-
+        TextSendMessage(text=event.message.text)
+    )
+ 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT"))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="localhost", port=8000)   # ポート番号を8000に指定
